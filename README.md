@@ -59,24 +59,24 @@ install dependences
 ```bat
 pip install argparser
 pip install mido
+pip install pygame
 ```
 
 use python script to get data file
 
 ```bat
 python.exe .\get_notes.py -h
+pygame 2.6.1 (SDL 2.28.4, Python 3.9.0)
+Hello from the pygame community. https://www.pygame.org/contribute.html
 usage:
-get track notes data to a lua file
---input input_file
---output output_file
---track track_index
-       [-h] [--input INPUT] [--output OUTPUT] [--track TRACK]
+get track notes data to a lua file [-h] [--input INPUT] [--output OUTPUT] [--track TRACK] [--play PLAY]
 
 optional arguments:
   -h, --help       show this help message and exit
-  --input INPUT    input midi file
-  --output OUTPUT  output data file
-  --track TRACK    track index
+  --input INPUT    str, input midi file
+  --output OUTPUT  str, output data file
+  --track TRACK    int, track index
+  --play PLAY      bool, if to play a track
 ```
 
 # Credits
