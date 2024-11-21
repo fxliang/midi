@@ -15,7 +15,7 @@ target("midi")
   -- if mingw platform
   if is_plat("mingw") then
     -- static libgcc and libstdc++
-    add_shflags("-static-libgcc", "-static-libstdc++", {force=true})
+    add_shflags("-static-libgcc", "-static-libstdc++", "-static", {force=true})
   end
   -- copy midi.dll to project dir
   after_build(function(target)

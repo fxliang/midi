@@ -55,15 +55,18 @@ end
 --- librime-lua functions
 -------------------------------------------------------------------------------
 local function init(env)
+	env.kRejected, env.kAccepted, env.kNoop = 0, 1, 2
+	if midi == nil then return end
   midi.init()
-  env.kRejected, env.kAccepted, env.kNoop = 0, 1, 2
 end
 
 local function fini(env)
+	if midi == nil then return end
   midi.fini()
 end
 
 local function func(key, env)
+	if midi == nil then return env.kNoop end
   if key.keycode == 0 then return env.kNoop end
   local keycode = key.keycode
   -- return to reset

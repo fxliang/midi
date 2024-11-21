@@ -33,18 +33,14 @@ int playNoteOff(lua_State *L) {
   return 0;
 }
 
-int midiInit(lua_State *L) {
-  if (midiOutOpen(&midiOut, 0, 0, 0, CALLBACK_NULL) != MMSYSERR_NOERROR) {
-    std::cerr << "Failed to open MIDI output device" << std::endl;
-    return luaL_error(L, "Failed to open MIDI output device");
-  }
-  return 0;
-}
-
 int fini(lua_State *L) {
-  if (midiOut) {
-    midiOutClose(midiOut);
-    midiOut = nullptr;
+  try {
+    if (midiOut) {
+      midiOutClose(midiOut);
+      midiOut = nullptr;
+    }
+  } catch (const std::exception &e) {
+    return luaL_error(L, e.what());
   }
   return 0;
 }
